@@ -7,7 +7,7 @@ import torch
 import pytorch_lightning as pl
 import numpy as np
 import os
-from torchmetrics import IoU
+from torchmetrics.detection.mean_ap import MeanAveragePrecision as IoU
 from torchmetrics.functional import accuracy
 # from setr.SETR import *
 # from setr.SETR import SETR_Naive_S_CS
