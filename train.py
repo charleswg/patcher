@@ -27,6 +27,7 @@ if __name__ == '__main__':
     parser.add_argument('--save_n_epochs', default=50)
     parser.add_argument('--resume', action='store_true', default=False)
     parser.add_argument('--version', default=0)
+    parser.add_argument('--gpu_ids', default='1')
 
     args = parser.parse_args()
     cfg = Config(args.cfg, tmp=args.tmp, create_dirs=False)
@@ -34,11 +35,15 @@ if __name__ == '__main__':
     rs = RandomState(cfg.seed)
 
     seed_everything(cfg.seed, workers=True)
-    gpus = [int(x) for x in args.gpus.split(',')]
+    gpus = [int(x) for x in args.gpus_ids.split(',')]
     num_gpus = len(gpus)
     # if num_gpus > 1:
     #     cfg.batchsize //= num_gpus
 
+    if args.gpu_ids is not None:
+        cfg.gpu_ids = args.gpu_ids
+    else:
+        cfg.gpu_ids = range(1) if args.gpus is None else range(args.gpus)
 
     train_dataset = build_dataset(cfg.cfg_mm.data.train)
     trainloader = build_dataloader(
