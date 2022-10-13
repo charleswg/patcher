@@ -14,11 +14,13 @@ Pytorch Implementation for our MICCAI 2022 paper: [Patcher: Patch Transformers w
 * Python >= 3.7
 
 ### Dependencies:
-1. Install [PyTorch 1.6.0](https://pytorch.org/get-started/previous-versions/) with the correct CUDA version.
+1. Install [PyTorch 1.12.0](https://pytorch.org/get-started/previous-versions/) with the correct CUDA 11 version.
 2. Install the dependencies:
     ```
-    pip install pytorch_lightning==1.5.2
-    pip install mmcv-full==1.2.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
+    pip install pytorch_lightning==1.5.2 
+    pip install mmcv-full==1.6.2 -f https://download.openmmlab.com/mmcv/dist/cu116/torch1.12.0/index.html
+    pip install git+https://github.com/cmpark0126/pytorch-polynomial-lr-decay.git
+    pip install timm==0.6.11 
     pip install -r requirements.txt
 
     ```
