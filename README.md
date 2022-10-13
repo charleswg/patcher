@@ -19,8 +19,6 @@ Pytorch Implementation for our MICCAI 2022 paper: [Patcher: Patch Transformers w
     ```
     pip install pytorch_lightning==1.5.2 
     pip install mmcv-full==1.6.2 -f https://download.openmmlab.com/mmcv/dist/cu116/torch1.12.0/index.html
-    pip install git+https://github.com/cmpark0126/pytorch-polynomial-lr-decay.git
-    pip install timm==0.6.11 
     pip install -r requirements.txt
 
     ```
