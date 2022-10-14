@@ -19,6 +19,9 @@ from utils import *
 from setr.LitModel import *
 from unet.LitUNet import LitUNet
 
+import pandas as pd
+from os.path import exists
+
 
 def get_args():
     parser = argparse.ArgumentParser(description='Train the UNet on images and target masks',
@@ -82,5 +85,21 @@ if __name__ == '__main__':
     else:
         csv_file = 'results_csv/stroke.csv'
 
+    if not exists(csv_file):
+        print('Result csv file not exist. Creating new ...')
+        df=pd.DataFrame()
+        df['config_id']=None
+        df['l_patch']=None
+        df['s_patch']=None
+        df['fold']=None
+        df['epoch']=None
+        df['batch_size']=None
+        df['last_epoch']=None
+        df['version']=None
+        df['mIoU']=None
+        df['dice']=None
+        df['stroke_IoU']=None
+        df.to_csv(csv_file)
+            
     write_metrics_to_csv(csv_file, cfg, res['mIoU'], res['dice'], res['stroke_IoU'], version=args.version, epoch=epoch, batch_size=bs, last_epoch=last_epoch)
     print(res)
