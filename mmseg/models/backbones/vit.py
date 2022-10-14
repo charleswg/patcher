@@ -3,7 +3,7 @@ import torch.nn as nn
 from functools import partial
 import math
 from itertools import repeat
-from torch._six import container_abcs
+import collections.abc as container_abcs
 import warnings
 
 from .helpers import load_pretrained
