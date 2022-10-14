@@ -35,7 +35,7 @@ if __name__ == '__main__':
     rs = RandomState(cfg.seed)
 
     seed_everything(cfg.seed, workers=True)
-    gpus = [int(x) for x in args.gpus_ids.split(',')]
+    gpus = [int(x) for x in args.gpu_ids.split(',')]
     num_gpus = len(gpus)
     # if num_gpus > 1:
     #     cfg.batchsize //= num_gpus
