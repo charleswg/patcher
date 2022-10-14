@@ -31,7 +31,8 @@ def get_args():
     parser.add_argument('--version', default=None)
     parser.add_argument('--model', default='setr')
     parser.add_argument('--vis', action='store_true', default=False)
-                 
+    parser.add_argument('--gpu_ids', default='0')                 
+    
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -39,10 +40,15 @@ if __name__ == '__main__':
     cfg = Config(args.cfg)
 
     rs = RandomState(cfg.seed)
-    gpus = [int(x) for x in args.gpus.split(',')]
+    gpus = [int(x) for x in args.gpu_ids.split(',')]
     num_gpus = len(gpus)
     # if num_gpus > 1:
     #     cfg.batchsize //= num_gpus
+
+    if args.gpu_ids is not None:
+        cfg.gpu_ids = args.gpu_ids
+    else:
+        cfg.gpu_ids = range(1) if args.gpus is None else range(args.gpus)
 
     seed_everything(cfg.seed, workers=True)
 
