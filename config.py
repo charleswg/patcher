@@ -54,8 +54,8 @@ class Config:
         self.optim_type = cfg.get('optim_type', 'SGD')
         
         self.fold = cfg['fold']
-        if self.dataset == 'stroke':
-            
-            self.cfg_mm.data.train.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
-            self.cfg_mm.data.val.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
-            self.cfg_mm.data.test.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
+#        if self.dataset == 'stroke':
+#            
+#            self.cfg_mm.data.train.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
+#            self.cfg_mm.data.val.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
+#            self.cfg_mm.data.test.data_root = os.path.expanduser(f'~/data/stroke_trans/fold_{self.fold}')
